@@ -1,7 +1,7 @@
 {
-    "name": "riptide-dona-api",
+    "name": "stream-dao-donation-api",
     "version": "1.0.1",
-    "description": "API for StreamDAO project for Streaming Payment",
+    "description": "API for StreamPayment is a checkout donations platform built on Solana Pay",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
