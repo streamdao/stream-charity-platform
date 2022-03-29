@@ -25,13 +25,13 @@ Stream's Donations API and Donations Component are used to present customers wit
 ### Quick Start
 Install the Donations API and the Donations Component.
 ```
-npm config set '@riptide-dona:registry' https://node.bit.dev
-npm i riptide-dona-api @riptide-dona/react-components.ui.donation-component
+npm config set '@streamdao-donate:registry' https://node.bit.dev
+npm i stream-donate-api @streamdao-donate/react-components.ui.donation-component
 ```
 Render the Donation Component in the checkout flow by passing in the merchant's public key and the purchase subtotal (pre-donation) in cents as props.
 ```javascript
 import  *  as  React  from  'react';
-import  DonationComponent  from  '@riptide-dona/react-components.ui.donation-component';
+import  DonationComponent  from  '@streamdao-donate/react-components.ui.donation-component';
 
 function Example(props) {
 	const { merchantPublicKey, purchaseCents } = props;
@@ -61,7 +61,7 @@ selectedOption.donation_transaction_request.url
 ```
 After the customer completes the transaction, mark the donation complete using the merchant's public key and the `selectedOption` set by the Donation Component.
 ```javascript
-import { markDonationComplete } from  'riptide-dona-api';
+import { markDonationComplete } from  'stream-donate-api';
 
 const onTransactionVerified = (merchantPublicKey, selectedOption) => {
 	markDonationComplete(merchantPublicKey, selectedOption);
@@ -108,6 +108,7 @@ A Donation Configuration contains information about the options to donate presen
 - `options`: a list of Donation Options
 
 ### Donations API Specification
+
 #### `getDonationConfig`
 - Purpose
 	- fetch the merchant's active configuration
@@ -137,12 +138,12 @@ Props
 - `configOverride`: (optional) a Donation Configuration to render. When present, `merchantPublicKey` and `purchaseCents` are ignored. 
 
 ## Local Setup Instructions
-Dona consists of a React app frontend, Flask App backend, and PostgreSQL database. Follow the instructions below in order to demo Dona's functionality on a local machine.
+Dona consists of a React app frontend, Flask App backend, and PostgreSQL database. Follow the instructions below in order to demo Donation's functionality on a local machine.
 
 ### PostgreSQL Setup
 Set up a local [PostgreSQL db](https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb).
 
-Once PostgreSQL is installed, create the database for the application within postgresql: `CREATE DATABASE dona;`
+Once PostgreSQL is installed, create the database for the application within postgresql: `CREATE DATABASE donate;`
 
 ### Flask App Setup
 1. Navigate to the `/server` directory
@@ -150,7 +151,7 @@ Once PostgreSQL is installed, create the database for the application within pos
 3. Create virtualenv: `virtualenv venv`
 4. Activate virtualenv: `source venv/bin/activate`
 5. Install dependencies: `pip install -r requirements.txt`
-6. Set environment variables e.g. `export SECRET_KEY=foo && export DATABASE_URI=postgresql://user:password@localhost:5432/dona && export FLASK_ENV=development && export APP_BASE_URL=http://127.0.0.1:5000`
+6. Set environment variables e.g. `export SECRET_KEY=foo && export DATABASE_URI=postgresql://user:password@localhost:5432/donate && export FLASK_ENV=development && export APP_BASE_URL=http://127.0.0.1:5000`
 7. Apply database migrations: `flask db upgrade`
 8. Set an env variable with the public key of a wallet (e.g. Phantom) you want to log into the merchant dashboard with e.g. `export MERCHANT_DEMO_KEY=9ZNTfG4NyQgxy2SWjSiQoUyBPEvXT2xo7fKc5hPYYJ7b`. Make sure that **you have access to this wallet**, otherwise wallet adapter will not work when you try to log in.
 9. Generate some dummy demo data to populate the dashboard: `python generate_sample_data.py`

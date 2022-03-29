@@ -19,7 +19,7 @@ import Container from '@mui/material/Container';
 
 import { RecipientsContext } from '../MerchantPortal';
 
-import DonationComponent from '@riptide-dona/react-components.ui.donation-component';
+import DonationComponent from '@streamdao-donate/react-components.ui.donation-component';
 
 function ConfigTemplate(props) {
   const theme = useTheme();

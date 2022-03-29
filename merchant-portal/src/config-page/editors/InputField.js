@@ -1,5 +1,5 @@
 import * as React from 'react';
-import CurrencyTextField from '@riptide-dona/react-components.ui.currency-text-field';
+import CurrencyTextField from '@streamdao-donate/react-components.ui.currency-text-field';
 
 export function centsToDollars(cents) {
   return (cents / 100).toLocaleString(
